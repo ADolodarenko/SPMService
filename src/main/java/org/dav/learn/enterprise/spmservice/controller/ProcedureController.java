@@ -1,35 +1,45 @@
 package org.dav.learn.enterprise.spmservice.controller;
 
 import org.dav.learn.enterprise.spmservice.model.ProcedureInfo;
+import org.dav.learn.enterprise.spmservice.service.ProcedureService;
+import org.dav.learn.enterprise.spmservice.service.ProcedureServiceImpl;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
 @Controller
 public class ProcedureController {
-    private static ProcedureInfo procedureInfo;
+    ProcedureService procedureService = new ProcedureServiceImpl();
 
-    static {
-        procedureInfo = new ProcedureInfo();
-        procedureInfo.setDatabaseId(5);
-        procedureInfo.setProcedureId(1);
-        procedureInfo.setProcedureName("usp_dav_test");
-        procedureInfo.setProcedureDescription("usp_dav_test");
-    }
-
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     public ModelAndView allProcedures() {
+        List<ProcedureInfo> procedures = procedureService.allProcedures();
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("procedures");
-        modelAndView.addObject("procedureInfo", procedureInfo);
+        modelAndView.addObject("proceduresList", procedures);
         return modelAndView;
     }
 
-    @RequestMapping(value = "/edit", method = RequestMethod.GET)
-    public ModelAndView editProcedure() {
+    //Go to the edit procedure page
+    @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
+    public ModelAndView editPage(@PathVariable("id") int id) {
+        ProcedureInfo procedureInfo = procedureService.getById(id);
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("editProcedure");
+        modelAndView.setViewName("editPage");
+        modelAndView.addObject("procedure", procedureInfo);
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/edit", method = RequestMethod.POST)
+    public ModelAndView editProcedure(@ModelAttribute("procedure") ProcedureInfo procedureInfo) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("redirect:/");
+        procedureService.edit(procedureInfo);
         return modelAndView;
     }
 }
