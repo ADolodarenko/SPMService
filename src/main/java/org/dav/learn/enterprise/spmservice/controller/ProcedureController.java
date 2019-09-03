@@ -3,6 +3,7 @@ package org.dav.learn.enterprise.spmservice.controller;
 import org.dav.learn.enterprise.spmservice.model.ProcedureInfo;
 import org.dav.learn.enterprise.spmservice.service.ProcedureService;
 import org.dav.learn.enterprise.spmservice.service.ProcedureServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,7 +15,12 @@ import java.util.List;
 
 @Controller
 public class ProcedureController {
-    ProcedureService procedureService = new ProcedureServiceImpl();
+    private ProcedureService procedureService;
+
+    @Autowired
+    public void setProcedureService(ProcedureService procedureService) {
+        this.procedureService = procedureService;
+    }
 
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView allProcedures() {

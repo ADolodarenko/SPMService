@@ -3,11 +3,19 @@ package org.dav.learn.enterprise.spmservice.service;
 import org.dav.learn.enterprise.spmservice.dao.ProcedureDAO;
 import org.dav.learn.enterprise.spmservice.dao.ProcedureDAOImpl;
 import org.dav.learn.enterprise.spmservice.model.ProcedureInfo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class ProcedureServiceImpl implements ProcedureService {
-    private ProcedureDAO procedureDAO = new ProcedureDAOImpl();
+    private ProcedureDAO procedureDAO;
+
+    @Autowired
+    public void setProcedureDAO(ProcedureDAO procedureDAO) {
+        this.procedureDAO = procedureDAO;
+    }
 
     @Override
     public List<ProcedureInfo> allProcedures() {
