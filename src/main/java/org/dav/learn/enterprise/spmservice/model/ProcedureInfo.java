@@ -1,9 +1,25 @@
 package org.dav.learn.enterprise.spmservice.model;
 
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "spm_proc_info")
+@IdClass(ProcedureId.class)
 public class ProcedureInfo {
+
+    @Id
+    @Column(name = "database_id")
     private int databaseId;
+
+    @Id
+    @Column(name = "proc_id")
     private int procedureId;
+
+    @Column(name = "proc_name")
     private String procedureName;
+
+    @Column(name = "proc_description")
     private String procedureDescription;
 
     public int getDatabaseId() {

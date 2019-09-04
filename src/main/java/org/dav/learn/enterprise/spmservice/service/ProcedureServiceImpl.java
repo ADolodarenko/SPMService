@@ -5,6 +5,7 @@ import org.dav.learn.enterprise.spmservice.dao.ProcedureDAOImpl;
 import org.dav.learn.enterprise.spmservice.model.ProcedureInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -17,6 +18,7 @@ public class ProcedureServiceImpl implements ProcedureService {
         this.procedureDAO = procedureDAO;
     }
 
+    @Transactional
     @Override
     public List<ProcedureInfo> allProcedures() {
         return procedureDAO.allProcedures();
