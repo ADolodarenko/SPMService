@@ -1,7 +1,6 @@
 package org.dav.learn.enterprise.spmservice.service;
 
 import org.dav.learn.enterprise.spmservice.dao.ProcedureDAO;
-import org.dav.learn.enterprise.spmservice.dao.ProcedureDAOImpl;
 import org.dav.learn.enterprise.spmservice.model.ProcedureInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,13 +23,15 @@ public class ProcedureServiceImpl implements ProcedureService {
         return procedureDAO.allProcedures();
     }
 
+    @Transactional
     @Override
     public void edit(ProcedureInfo procedureInfo) {
         procedureDAO.edit(procedureInfo);
     }
 
+    @Transactional
     @Override
-    public ProcedureInfo getById(int id) {
-        return procedureDAO.getById(id);
+    public ProcedureInfo getByIds(short databaseId, int procedureId) {
+        return procedureDAO.getByIds(databaseId, procedureId);
     }
 }

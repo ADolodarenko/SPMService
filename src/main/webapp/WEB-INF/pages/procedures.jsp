@@ -26,7 +26,7 @@
                 <td>${procedure.procedureId}</td>
                 <td>${procedure.procedureName}</td>
                 <td>${procedure.procedureDescription}</td>
-                <td><a href="/edit/${procedure.procedureId}">edit</a></td>
+                <td><a href="/edit/${procedure.databaseId}-${procedure.procedureId}">edit</a></td>
             </tr>
         </c:forEach>
     </table>

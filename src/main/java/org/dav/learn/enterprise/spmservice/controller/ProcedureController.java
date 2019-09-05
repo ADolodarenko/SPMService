@@ -32,9 +32,9 @@ public class ProcedureController {
     }
 
     //Go to the edit procedure page
-    @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
-    public ModelAndView editPage(@PathVariable("id") int id) {
-        ProcedureInfo procedureInfo = procedureService.getById(id);
+    @RequestMapping(value = "/edit/{dbid}-{procid}", method = RequestMethod.GET)
+    public ModelAndView editPage(@PathVariable("dbid") short databaseId, @PathVariable("procid") int procedureId) {
+        ProcedureInfo procedureInfo = procedureService.getByIds(databaseId, procedureId);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("editPage");
         modelAndView.addObject("procedure", procedureInfo);

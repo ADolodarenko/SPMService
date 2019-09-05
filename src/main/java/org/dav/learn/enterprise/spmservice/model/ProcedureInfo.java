@@ -10,7 +10,7 @@ public class ProcedureInfo {
 
     @Id
     @Column(name = "database_id")
-    private int databaseId;
+    private short databaseId;
 
     @Id
     @Column(name = "proc_id")
@@ -22,11 +22,11 @@ public class ProcedureInfo {
     @Column(name = "proc_description")
     private String procedureDescription;
 
-    public int getDatabaseId() {
+    public short getDatabaseId() {
         return databaseId;
     }
 
-    public void setDatabaseId(int databaseId) {
+    public void setDatabaseId(short databaseId) {
         this.databaseId = databaseId;
     }
 

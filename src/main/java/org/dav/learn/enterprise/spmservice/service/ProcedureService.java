@@ -7,5 +7,5 @@ import java.util.List;
 public interface ProcedureService {
     List<ProcedureInfo> allProcedures();
     void edit(ProcedureInfo procedureInfo);
-    ProcedureInfo getById(int id);
+    ProcedureInfo getByIds(short databaseId, int procedureId);
 }
