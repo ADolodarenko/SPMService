@@ -10,25 +10,47 @@
 <html>
 <head>
     <title>Procedures</title>
+    <link href="<c:url value="/res/style.css"/>" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-    <h2>Available stored procedures</h2>
-    <table>
-        <tr>
-            <th>Database ID</th>
-            <th>Procedure ID</th>
-            <th>Name</th>
-            <th>Description</th>
-        </tr>
-        <c:forEach var="procedure" items="${proceduresList}">
+    <header>
+        <h2>Available stored procedures</h2>
+    </header>
+    <table class="blueTable">
+        <thead>
             <tr>
-                <td>${procedure.databaseId}</td>
-                <td>${procedure.procedureId}</td>
-                <td>${procedure.procedureName}</td>
-                <td>${procedure.procedureDescription}</td>
-                <td><a href="/edit/${procedure.databaseId}-${procedure.procedureId}">edit</a></td>
+                <th>Database ID</th>
+                <th>Procedure ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>*</th>
             </tr>
-        </c:forEach>
+        </thead>
+        <tbody>
+            <c:forEach var="procedure" items="${proceduresList}">
+                <tr>
+                    <td>${procedure.databaseId}</td>
+                    <td>${procedure.procedureId}</td>
+                    <td>${procedure.procedureName}</td>
+                    <td>${procedure.procedureDescription}</td>
+                    <td><a href="/edit/${procedure.databaseId}-${procedure.procedureId}">edit</a></td>
+                </tr>
+            </c:forEach>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="5">
+                    <div class="links">
+                        <c:forEach begin="1" end="${pagesCount}" step="1" varStatus="i">
+                            <c:url value="/" var="url">
+                                <c:param name="page" value="${i.index}"/>
+                            </c:url>
+                            <a href="${url}">${i.index}</a>
+                        </c:forEach>
+                    </div>
+                </td>
+            </tr>
+        </tfoot>
     </table>
 </body>
 </html>

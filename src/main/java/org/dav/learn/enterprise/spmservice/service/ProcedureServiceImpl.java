@@ -19,8 +19,8 @@ public class ProcedureServiceImpl implements ProcedureService {
 
     @Transactional
     @Override
-    public List<ProcedureInfo> allProcedures() {
-        return procedureDAO.allProcedures();
+    public List<ProcedureInfo> allProcedures(int pageNumber) {
+        return procedureDAO.allProcedures(pageNumber);
     }
 
     @Transactional
@@ -33,5 +33,11 @@ public class ProcedureServiceImpl implements ProcedureService {
     @Override
     public ProcedureInfo getByIds(short databaseId, int procedureId) {
         return procedureDAO.getByIds(databaseId, procedureId);
+    }
+
+    @Transactional
+    @Override
+    public int proceduresCount() {
+        return procedureDAO.proceduresCount();
     }
 }
