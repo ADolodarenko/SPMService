@@ -1,9 +1,33 @@
+/*
 header {
     color: #FFFFFF;
     background: #1B9E5F;
     background: -moz-linear-gradient(top, #54b687 0%, #31a76f 66%, #1B9E5F 100%);
     background: -webkit-linear-gradient(top, #54b687 0%, #31a76f 66%, #1B9E5F 100%);
     background: linear-gradient(to bottom, #54b687 0%, #31a76f 66%, #1B9E5F 100%);
+}
+*/
+
+body, html {
+    height: 100%;
+}
+
+.header-image {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("main-logo.png");
+    height: 20%;
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: auto;
+    position: relative;
+}
+
+.header-text {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
 }
 
 table.blueTable {
@@ -19,6 +43,13 @@ table.blueTable td, table.blueTable th {
 }
 table.blueTable tbody td {
     font-size: 13px;
+}
+table.blueTable tbody .links a{
+    display: inline-block;
+    background: #1B9E5F;
+    color: #FFFFFF;
+    padding: 2px 8px;
+    border-radius: 5px;
 }
 table.blueTable thead {
     background: #1B9E5F;

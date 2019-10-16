@@ -14,7 +14,11 @@
 </head>
 <body>
     <header>
-        <h2>Available stored procedures</h2>
+        <div class="header-image">
+            <div class="header-text">
+                <h2>Available stored procedures</h2>
+            </div>
+        </div>
     </header>
     <table class="blueTable">
         <thead>
@@ -33,7 +37,7 @@
                     <td>${procedure.procedureId}</td>
                     <td>${procedure.procedureName}</td>
                     <td>${procedure.procedureDescription}</td>
-                    <td><a href="/edit/${procedure.databaseId}-${procedure.procedureId}">edit</a></td>
+                    <td class="links"><a href="/edit/${procedure.databaseId}-${procedure.procedureId}">edit</a></td>
                 </tr>
             </c:forEach>
         </tbody>
